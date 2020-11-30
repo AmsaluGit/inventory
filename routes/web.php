@@ -13,6 +13,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CountriesController;
 
   
 
@@ -63,3 +64,24 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('products', ProductController::class);
 
 });
+ 
+Route::resource('countries', CountriesController::class);
+/*
+Route::group([
+    'prefix' => 'countries',
+], function () {
+    Route::get('/', 'CountriesController@index')
+         ->name('countries.country.index');
+    Route::get('/create','CountriesController@create')
+         ->name('countries.country.create');
+    Route::get('/show/{country}','CountriesController@show')
+         ->name('countries.country.show')->where('id', '[0-9]+');
+    Route::get('/{country}/edit','CountriesController@edit')
+         ->name('countries.country.edit')->where('id', '[0-9]+');
+    Route::post('/', 'CountriesController@store')
+         ->name('countries.country.store');
+    Route::put('country/{country}', 'CountriesController@update')
+         ->name('countries.country.update')->where('id', '[0-9]+');
+    Route::delete('/country/{country}','CountriesController@destroy')
+         ->name('countries.country.destroy')->where('id', '[0-9]+');
+});*/
