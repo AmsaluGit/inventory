@@ -49,12 +49,12 @@ class CountriesController extends Controller
             
             Country::create($data);
 
-            return redirect()->route('countries.country.index')
+            return redirect()->route('countries.index')
                 ->with('success_message', 'Country was successfully added.');
         } catch (Exception $exception) {
 
             return back()->withInput()
-                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+                ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.---']);
         }
     }
 
@@ -104,7 +104,7 @@ class CountriesController extends Controller
             $country = Country::findOrFail($id);
             $country->update($data);
 
-            return redirect()->route('countries.country.index')
+            return redirect()->route('countries.index')
                 ->with('success_message', 'Country was successfully updated.');
         } catch (Exception $exception) {
 
@@ -126,7 +126,7 @@ class CountriesController extends Controller
             $country = Country::findOrFail($id);
             $country->delete();
 
-            return redirect()->route('countries.country.index')
+            return redirect()->route('countries.index')
                 ->with('success_message', 'Country was successfully deleted.');
         } catch (Exception $exception) {
 
